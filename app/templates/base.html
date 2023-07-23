@@ -1,0 +1,16 @@
+<!DOCTYPE html>  <!--このページがHTMLで記述されていることをブラウザに認識させる-->
+<html lang="ja">  <!--Webページの言語を日本語に設定できる-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<head>  <!--このタグで囲った中に、そのページについての情報を記述する。ブラウザには表示されない。-->
+    <meta charset="UTF-8">  <!--文字コードを「UTF-8」に指定する。文字化けを防ぐ。-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!--レスポンシブ対応で用いる。-->
+    <title>No Radio noise</title>  <!--ページのタイトルを指定する。ここで指定したタイトルがページのタイトルだけでなくブラウザのタブとしても表示される。-->
+    <!-- cssの読み込み -->
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+    {% block body %}{% endblock %}
+
+    {% block scripts %}{% endblock %}
+</body>
+</html>

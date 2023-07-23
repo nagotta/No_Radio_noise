@@ -1,0 +1,26 @@
+<!-- コーナーの登録を行うページ -->
+{% extends "base.html" %}
+
+{% block body %}
+<div id="registrationForm">
+  <h2 class="form-title">コーナー追加</h2>
+  <form action="/register_corner" method="POST">
+    <label for="radioName" class="input-label">ラジオ名</label>
+    <select id="radioName" class="input-field" name="radioName" required>
+      {% for radio_name in radio_names %}
+        <option value="{{radio_name}}">{{radio_name}}</option>
+      {% endfor %}
+    </select>
+    
+    <label for="cornerName" class="input-label">コーナー名</label>
+    <input type="text" id="cornerName" class="input-field" name="cornerName" required>
+    
+    <button type="submit" class="btn btn--yellow btn--cubic btn--submit">提出</button>
+  </form>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<!-- 追加: 選択ボタンを制御する JavaScript -->
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+{% endblock %}

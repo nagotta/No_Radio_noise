@@ -1,0 +1,15 @@
+<!--db確認用ページ-->
+{% extends "base.html" %}
+
+{% block body %}
+<div class="">
+    <h2>ラジオ一覧</h2>
+    <ul>
+        {% for radios in radios %}
+            <li>ラジオ名 : {{ radios.name }} チャンネルタイプ : {{ radios.channel_type }}</li>
+            <li>チャンネルid : {{ radios.channel_id }}</li>
+        {% endfor %}
+    </ul>
+</div>
+
+{% endblock %}

@@ -1,0 +1,25 @@
+<!--ラジオチャンネルの登録ページのテンプレートです。-->
+{% extends "base.html" %}
+
+{% block body %}
+
+<h1 class="form-title">Register Radio</h1>
+<!-- フォームの定義 -->
+<form id="registrationForm" method="POST">
+    <label class="input-label" for="radioName">ラジオ名:</label>
+    <input class="input-field" type="text" id="radioName" name="radioName" required>
+    <label class="input-label" for="channelUrl">チャンネルURL:</label>
+    <input class="input-field" type="url" id="channelUrl" name="channelUrl" required>
+    <label class="input-label" for="email">メールアドレス:</label>
+    <input class="input-field" type="email" id="email" name="email" required>
+    <label class="input-label" for="cornerName">コーナー名:</label>
+    <input class="input-field" type="text" id="cornerName" name="cornerName">
+    <!-- 提出ボタンの定義 -->
+    <button type="submit" class="btn btn--submit btn--cubic">提出</button>
+</form>
+
+{% endblock %}
+{% block scripts %}
+<!-- 追加: 選択ボタンを制御する JavaScript -->
+<script src="./static/js/script.js"></script>
+{% endblock %}

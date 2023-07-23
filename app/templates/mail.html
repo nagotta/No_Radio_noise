@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div class="container">
+    <h2>はがき作成</h2>
+    <form id="registerForm" method="POST" action="/mail">
+        <div class="form-group">
+            <label for="radioSelect">ラジオ：</label><br>
+            <select id="radioSelect" name="radioName" class="form-control">
+                {% for radio_name in radio_names %}
+                    <option value="{{ radio_name }}">{{ radio_name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="cornerSelect">コーナー：</label><br>
+            <select id="cornerSelect" name="cornerName" class="form-control">
+                <!-- Corner options will be dynamically generated here -->
+                {% for corner_name in corner_names %}
+                    <option value="{{ corner_name }}">{{ corner_name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="content">本文：</label><br>
+            <textarea id="content" name="content" class="form-control" rows="4"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">送信</button>
+    </form>
+</div>
+{% endblock %}
+{% block scripts %}
+<!-- 追加: 選択ボタンを制御する JavaScript -->
+<script src="./static/js/mail.js"></script> <!-- JSファイル名を適切なものに変更 -->
+{% endblock %}
