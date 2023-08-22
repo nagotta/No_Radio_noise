@@ -1,26 +1,26 @@
 {% extends "base.html" %}
 
 {% block body %}
-<div class="container">
+<div class="container" id="registrationForm">
     <h2>コーナー削除</h2>
     <form id="deletionForm" method="POST" action="/delete_corner">
         <div class="form-group">
-            <label for="radioSelect">ラジオ：</label><br>
-            <select id="radioSelect" name="radioName" class="form-control">
+            <label for="radioSelect" class="input-label">ラジオ</label><br>
+            <select id="radioSelect" name="radioName" class="input-field">
                 {% for radio_name in radio_names %}
                     <option value="{{ radio_name }}">{{ radio_name }}</option>
                 {% endfor %}
             </select>
         </div>
         <div class="form-group">
-            <label for="cornerSelect">コーナー：</label><br>
-            <select id="cornerSelect" name="cornerName" class="form-control">
+            <label for="cornerSelect" class="input-label">コーナー</label><br>
+            <select id="cornerSelect" name="cornerName" class="input-field">
                 {% for corner_name in corner_names %}
                     <option value="{{ corner_name }}">{{ corner_name }}</option>
                 {% endfor %}
             </select>
         </div>
-        <button type="submit" class="btn btn-primary">コーナー削除</button>
+        <button type="submit" class="btn btn--yellow btn--cubic btn--submit">コーナー削除</button>
     </form>
 </div>
 {% endblock %}

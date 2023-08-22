@@ -17,7 +17,7 @@
     
     {% for url in urls.youtube %}
     <div class="player">
-        <iframe src="{{ url }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <iframe src="{{ url }}" title="YouTube video player" width="100%" height="352" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     </div>
     {% endfor %}
     
@@ -44,6 +44,7 @@
         <iframe title="オールナイトニッポン０（ＺＥＲＯ）" src="{{ url }}" width="150%" height="300px" allow="clipboard-write *; web-share *;"></iframe>
     </div>
     {% endfor %}
+    <br>
     
     <div class="footer">
         <a href="https://gera.fan/external" target="_blank">

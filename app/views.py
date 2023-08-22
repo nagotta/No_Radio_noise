@@ -60,11 +60,11 @@ def index():
             "radiotalk": [],
             "radiko": []
         }
-
         for radio in radios:
             channel_type = radio.channel_type
             channel_id = radio.channel_id
 
+            # チャンネルURLにアクセスして最新エピソードURLを取得
             if channel_type == "standfm":
                 scraper = StandFmScraper(channel_id, 7, '.css-175oi2r a', 'https://stand.fm/episodes/')
             elif channel_type == "youtube":
@@ -72,7 +72,7 @@ def index():
             elif channel_type == "spotify":
                 scraper = SpotifyScraper(channel_id, 7, 'div.HLixBI5DbVZNC6lrUbAB a', 'https://open.spotify.com/episode/')
             elif channel_type == "tver":
-                scraper = TverScraper(channel_id, 7, 'div.episode-pattern-c_container__7UBI_.episode-pattern-c_listContainer__4o6TL a', 'https://tver.jp/episodes/')
+                scraper = TverScraper(channel_id, 7, 'div.episode-row_host__nSdWB a', 'https://tver.jp/episodes/')
             elif channel_type == "radiotalk":
                 scraper = RadiotalkScraper(channel_id, 7, 'div.program-action a', 'https://radiotalk.jp/talk/') 
             elif channel_type == "radiko":
@@ -82,6 +82,9 @@ def index():
 
             url = scraper.get_latest_episode()
             scraper.quit()
+            print(url)
+
+            # サイトに埋め込む形に取得したURLを整形
             if channel_type in ["standfm", "spotify"]:
                 parsed_url = urlparse(url)
                 embed_url = urlunparse(parsed_url._replace(path='/embed' + parsed_url.path))
@@ -138,6 +141,7 @@ def register_radio():
 
         return redirect(url_for('index'))
 
+# 確認用
 @app.route('/check_db')
 def employee_list():
     radios = Radio.query.all()
@@ -200,7 +204,6 @@ def delete_corner():
             return jsonify({"error": "Corner not found"}), 400 
         return jsonify({"error": "Radio not found"}), 400
 
-
 @app.route('/mail', methods=['GET', 'POST'])
 def mail():
     if request.method == 'GET':        
@@ -223,7 +226,6 @@ def mail():
         else:
             return jsonify({"error": "Radio not found"}), 400  
     return jsonify({"error": "can't send mail"}), 400
-
 
 @app.route('/get_corners/<radio_name>')
 def get_corners(radio_name):
